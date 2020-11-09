@@ -1,0 +1,38 @@
+<mat-card class="header-card">
+  <mat-card-header>
+    <div mat-card-avatar class="img-trampo"></div>
+    <mat-card-title>Trampos de belém</mat-card-title>
+    <mat-card-subtitle class="sub-titulo">Vagas para todas as categorias</mat-card-subtitle>
+
+    <button mat-button>Vagas</button>
+
+    <button mat-button>Empresas</button>
+
+    <button mat-button>Sobre a plataforma</button>
+
+    <div class="example-button-row" style="margin-left: 20%;">
+      <button mat-raised-button>Entrar</button>
+      <button mat-raised-button color="warn" style="margin-left: 5px;">Me cadastrar</button>
+    </div>
+  </mat-card-header>
+</mat-card>
+
+<mat-card class="div-centro-card">
+  <br>
+  <h1 class="vagas-totais">TEMOS {{vagasTotal}} VAGA(S) EM ABERTO</h1>
+
+</mat-card>
+
+<mat-card class="div-busca-card">
+  <div class="example-container" style="padding: 5%;">
+    <mat-form-field appearance="fill">
+      <mat-label>Input</mat-label>
+      <input matInput placeholder="Nome da vaga">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Input</mat-label>
+      <input matInput placeholder="TAG">
+    </mat-form-field>
+  </div>
+</mat-card>
+
