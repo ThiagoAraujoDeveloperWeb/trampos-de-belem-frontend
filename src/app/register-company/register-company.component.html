@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <mat-card class="header-register-company container">
-  <h5 style="text-align: center; color: black;">CRIAR CONTA DE EMPRESA</h5><br>
+  <h5 style="text-align: center; color: black;">CRIAR CONTA DE ANUNCIANTE</h5><br>
 
   <hr>
 
@@ -16,50 +16,62 @@
     <div class="form-row">
       <div class="col-md-6">
         <label class="label-text-input">Nome Completo*</label>
-        <input mdbInput type="text" class="form-control">
+        <input mdbInput type="text" name="fullName" [(ngModel)]="company.fullName" class="form-control">
       </div>
 
       <div class="col-md-6">
         <label class="label-text-input">Telefone para contato</label>
-        <input mdbInput type="text" class="form-control">
+        <input mdbInput type="text" name="contactPhone" [(ngModel)]="company.contactPhone" class="form-control">
       </div>
 
       <div class="col-md-6">
         <label class="label-text-input">Email*</label>
-        <input mdbInput type="text" class="form-control">
+        <input mdbInput type="text" name="email" [(ngModel)]="company.email" class="form-control">
       </div>
 
       <div class="col-md-6">
         <label class="label-text-input">Senha*</label>
-        <input mdbInput type="text" class="form-control">
+        <input mdbInput type="password" name="password" [(ngModel)]="company.password" class="form-control">
       </div>
 
       <div class="col-md-6">
         <label class="label-text-input">Nome da empresa*</label>
-        <input mdbInput type="text" class="form-control">
+        <input mdbInput type="text" name="nameCompany" [(ngModel)]="company.nameCompany" class="form-control">
       </div>
 
       <div class="col-md-6">
         <label class="label-text-input">Site da empresa*</label>
-        <input mdbInput type="text" class="form-control">
+        <input mdbInput type="text" name="companyWebsite" [(ngModel)]="company.companyWebsite" class="form-control">
       </div>
 
       <div class="col-md-6">
-        <label class="label-text-input">Cidade*</label>
-        <input mdbInput type="text" class="form-control">
+        <label class="label-text-input">Site da empresa*</label>
+        <select class="browser-default custom-select" name="city" [(ngModel)]="company.city">
+          <option selected>Selecione</option>
+          <option value="belem">Belém</option>
+        </select>
       </div>
 
       <div class="col-md-6">
         <label class="label-text-input">Descrição da empresa</label>
-        <textarea type="text" id="form7" class="md-textarea md-textarea-auto form-control" mdbInput></textarea>
+        <textarea type="text"
+                  id="form7"
+                  class="md-textarea md-textarea-auto form-control"
+                  name="companyDescription"
+                  [(ngModel)]="company.companyDescription"
+                  mdbInput></textarea>
       </div>
       <!-- Grid column -->
     </div>
     <!-- Grd row -->
+    <div class="spinner-border text-primary" role="status" *ngIf="loading">
+      <span class="sr-only">Loading...</span>
+    </div>
 
     <button mat-raised-button
       color="warn"
-      style="margin-left: 45%; margin-top: 5%;">Cadastrar</button>
+      (click)="cadastrarAnunciante()"
+      style="margin-left: 43%; margin-top: 5%;">Cadastrar</button>
   </form>
   <!-- Default form row -->
   <br><br>

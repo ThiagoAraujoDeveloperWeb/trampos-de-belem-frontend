@@ -13,20 +13,20 @@ export class AuthenticationService extends BaseService {
   ) { super(http); }
 
   autenticar(usuario) {
-    return super.post('usuarios/autenticar/', usuario)
+    return super.post('login', usuario)
   }
 
-  entrarAdmin(usuario) {
-    localStorage.setItem('viverbelem', JSON.stringify(usuario));
-    this.router.navigate(['admin/lista-empreendimento']);
+  entrar(usuario) {
+    localStorage.setItem('tramposdebelem', JSON.stringify(usuario));
+    this.router.navigate(['admin/dashboard']);
   }
 
   logout() {
-    localStorage.removeItem('viverbelem');
-    this.router.navigate(['login-admin']);
+    localStorage.removeItem('tramposdebelem');
+    this.router.navigate(['login-empresa']);
   }
 
   getUser() {
-    return JSON.parse(localStorage.getItem('viverbelem'));
+    return JSON.parse(localStorage.getItem('tramposdebelem'));
   }
 }
