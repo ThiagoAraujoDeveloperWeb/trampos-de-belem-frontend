@@ -13,4 +13,8 @@ export class HomeComponent implements OnInit {
     this.vagasTotal = 655;
   }
 
+  alerta() {
+    alert('Ta funcionando!');
+  }
+
 }
