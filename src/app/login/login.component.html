@@ -6,6 +6,10 @@
     <p class="h4 mb-4">ENTRAR</p>
     <hr>
 
+    <div class="alert alert-danger" role="alert" *ngIf="erro">
+      {{msg}}
+    </div>
+
     <input type="email"
            id="defaultLoginFormEmail"
            class="form-control mb-4"
@@ -22,8 +26,9 @@
 
     <button mat-raised-button
             color="warn"
-            (click)="entrar()"
-            style="margin-left: 5px; width: 370px;">Entrar</button>
+            class="form-control mb-4"
+            [class.spinner]="loading" [disabled]="loading"
+            (click)="entrar()">Entrar</button>
 
   </form>
 </mat-card>

@@ -20,7 +20,11 @@ import { RegisterCompanyComponent } from './register-company/register-company.co
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { AdminComponent } from './admin/admin.component';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import { AdminComponent } from './admin/admin.component';
     LoginComponent,
     HeaderComponent,
     AdminComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,11 @@ import { AdminComponent } from './admin/admin.component';
     MatFormFieldModule,
     NgbModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
