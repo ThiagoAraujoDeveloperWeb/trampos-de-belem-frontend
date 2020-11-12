@@ -1,0 +1,64 @@
+<app-loading [loading]="loading"></app-loading>
+<form *ngIf="leberarForm">
+  <!-- Grd row -->
+  <div class="form-row card-form">
+    <h3 style="color: black;">Cadastro de Vagas</h3>
+
+    <!-- Grid column -->
+    <div class="col-md-12">
+      <div class="alert alert-primary" role="alert">
+        Por favor, para melhor usabilidade da plataforma adicione as informações de acordo com o que você está procurando em um candidato,
+        dessa forma vai melhorar a interação do candidato com a sua empresa e assim fazendo o trabalho fluir melhor :)
+      </div>
+    </div>
+    <div class="col-md-12">
+      <label class="label-text-input">Título*</label>
+      <input mdbInput type="text" class="form-control " placeholder="Exemplo: Cabelereiro">
+    </div>
+    <!-- Grid column -->
+
+    <div class="col-md-12">
+      <label class="label-text-input">Tipo da Vaga*</label>
+      <select class="browser-default custom-select" name="city">
+        <option selected>Selecione</option>
+        <option value="clt">CLT</option>
+        <option value="autonomo">Autônomo</option>
+        <option value="empresario">Empresário</option>
+        <option value="estagiario">Estagiário</option>
+        <option value="freela">Freelancer</option>
+        <option value="voluntario">Voluntário</option>
+        <option value="temporario">Temporário</option>
+        <option value="pj">Contratação PJ</option>
+      </select>
+    </div>
+    <!-- Grid column -->
+    <div class="col-md-12">
+      <label class="label-text-input">Descrição da Vaga*</label>
+      <div class="alert alert-primary" role="alert">
+        Adicione tudo a respeito da vaga. HÁ!!! Se quiser adicione o valor também, fique a vontade é só uma dica (hehehe)
+      </div>
+      <p-editor name="text"
+                [(ngModel)]="text"
+                [style]="{'height':'320px'}"
+                placeholder="Escreva algo ..."></p-editor><br>
+    </div>
+
+    <div class="col-md-12">
+      <button pButton
+              pRipple
+              type="button"
+              label="Publicar"
+              class="p-button-secondary"></button>
+
+      <button pButton
+              pRipple
+              type="button"
+              label="Cancelar"
+              class="p-button-danger"
+              (click)="cancelar()"
+              style="margin-left: 1%;"></button>
+    </div>
+  </div>
+  <!-- Grd row -->
+</form>
+<!-- Default form row -->

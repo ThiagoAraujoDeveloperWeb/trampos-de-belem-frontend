@@ -1,0 +1,10 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.card-form {
+  float: left;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white;
+
+  padding: 10px 10px;
+}

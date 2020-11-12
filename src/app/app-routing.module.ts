@@ -2,13 +2,17 @@ import { from } from 'rxjs';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
+
 import { RegisterCompanyComponent } from './register-company/register-company.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { RegisterVacancyComponent } from './admin/register-vacancy/register-vacancy.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
-import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component';
 
 import { AuthGuard } from './_guards/auth.guard';
+
+
 
 
 const routes: Routes = [
@@ -18,7 +22,8 @@ const routes: Routes = [
   { path: 'cadastro-empresa', component: RegisterCompanyComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children:
     [
-      { path: 'dashboard', component: DashboardComponent }
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'registrar-vaga', component: RegisterVacancyComponent }
     ]
   }
 ];

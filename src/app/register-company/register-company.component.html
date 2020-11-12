@@ -45,7 +45,7 @@
       </div>
 
       <div class="col-md-6">
-        <label class="label-text-input">Site da empresa*</label>
+        <label class="label-text-input">Cidade*</label>
         <select class="browser-default custom-select" name="city" [(ngModel)]="company.city">
           <option selected>Selecione</option>
           <option value="belem">Belém</option>
@@ -67,6 +67,8 @@
     <div class="spinner-border text-primary" role="status" *ngIf="loading">
       <span class="sr-only">Loading...</span>
     </div>
+
+    <!-- <p-editor [style]="{'height':'320px'}"></p-editor> -->
 
     <button mat-raised-button
       color="warn"
