@@ -1,0 +1,47 @@
+<app-loading [loading]="loading"></app-loading>
+
+<h2>Lista de suas vagas cadastradas</h2>
+
+<span *ngIf="vacancies.length === 0" style="color: red;">Você não tem vagas cadastradas</span>
+<div class="card">
+  <p-table [value]="vacancies"
+           [paginator]="true"
+           [rows]="10"
+           [rowsPerPageOptions]="[10,25,50]">
+      <ng-template pTemplate="header">
+          <tr>
+              <th style="text-align: center;">Título</th>
+              <th style="text-align: center;">Tipo da vaga</th>
+              <th style="text-align: center;">Vaga Preenchida?</th>
+              <th style="text-align: center;">Data de publicação</th>
+              <th style="text-align: center;">Ações</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-vacancy>
+          <tr>
+              <td style="text-align: center;">{{ vacancy.title }}</td>
+              <td style="text-align: center;">{{ vacancy.type_vacancy }}</td>
+              <td style="text-align: center;">
+                <span class="{{ checkVacancies(vacancy.vacancy_filled)}}">
+                  {{ vacancy.vacancy_filled == false ? 'Não' : 'Sim' }}
+                </span>
+              </td>
+              <td style="text-align: center;">{{ vacancy.created_at | date: 'dd/MM/yyyy hh:mm' }}</td>
+              <td style="text-align: center;">
+                <button pButton
+                        pRipple
+                        type="button"
+                        label="Editar"
+                        (click)="editar(vacancy.id)"
+                        class="p-button-warning"></button>
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorleft">
+          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+          <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+      </ng-template>
+  </p-table>
+</div>

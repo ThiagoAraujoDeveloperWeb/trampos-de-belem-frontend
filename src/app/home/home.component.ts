@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(public caddateSrv: CandidateService) { }
 
   ngOnInit(): void {
-    this.vagasTotal = 655;
+    this.vagasTotal = 0;
     this.count();
   }
 
@@ -21,10 +21,11 @@ export class HomeComponent implements OnInit {
   }
 
   count() {
-    this.caddateSrv.listaVagas().then((response: any) => {
-      for (const contador of response) {
-        this.vagasTotal = contador.total;
-      }
+    this.caddateSrv.totalVagas().then((response: any) => {
+      this.vagasTotal = response.total_vacancies;
+      // for (const contador of response) {
+      //   this.vagasTotal = contador.total_vacancies;
+      // }
 
     }).catch(error => {
       alert('Não foi carregar o contador de vagas. Recarregue a página!');

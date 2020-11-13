@@ -1,0 +1,9 @@
+.vacancy-completed {
+  color: green;
+  font-weight: normal;
+}
+
+.vacancy-not-completed {
+  color: red;
+  font-weight: normal;
+}

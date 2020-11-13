@@ -14,6 +14,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-top: 5%;
 }
 
+.card-form {
+  float: left;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white;
+
+  padding: 10px 10px;
+}
+
 .vagas-totais {
   color: #6B797C!important;
   text-align: center;

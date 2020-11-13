@@ -23,20 +23,36 @@
   text-decoration: none;
 }
 
-.sidebar .link-menu.active {
+.link-menu.active {
   background-color: #4CAF50;
   color: white;
 }
 
-.sidebar .link-menu:hover:not(.active) {
+.link-menu:hover:not(.active) {
   background-color: rgb(112, 112, 112);
   color: white;
 }
 
 div.content {
-  margin-left: 200px;
+  margin-left: 2px;
   padding: 1px 16px;
   height: 1000px;
+}
+
+.bars-button {
+  cursor: pointer;
+  background-color: white;
+  padding: 5px;
+}
+
+::ng-deep .p-menu {
+  width: 110.5%;
+  margin-left: -5%;
+}
+
+.p-panelmenu {
+  width: 500px;
+  background-color: tomato;
 }
 
 @media screen and (max-width: 700px) {

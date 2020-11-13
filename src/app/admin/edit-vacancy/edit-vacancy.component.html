@@ -2,10 +2,10 @@
 
 <p-toast position="top-left"></p-toast>
 
-<form *ngIf="leberarForm" (ngSubmit)="salvar()">
+<form *ngIf="leberarForm" (ngSubmit)="atualizar()">
   <!-- Grd row -->
   <div class="form-row card-form">
-    <h3 style="color: black;">Cadastro de Vagas</h3>
+    <h3 style="color: black;">Atualizar Vaga</h3>
 
     <!-- Grid column -->
     <div class="col-md-12">
@@ -81,7 +81,7 @@
       <button pButton
               pRipple
               type="submit"
-              label="Publicar"
+              label="Atualizar"
               class="p-button-secondary"></button>
 
       <button pButton
