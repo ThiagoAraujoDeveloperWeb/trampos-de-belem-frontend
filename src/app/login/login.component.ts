@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
           this.loading = false;
           this.authSrv.entrar(response);
 
-          if (response.error) {
+          if (response.status === 403) {
+            this.erro = true;
             this.loading = false;
             this.msg = response.error;
           }

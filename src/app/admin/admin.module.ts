@@ -12,6 +12,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {EditorModule} from 'primeng/editor';
 import {ButtonModule} from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
 import {NgModule} from '@angular/core';
 
 @NgModule({
@@ -30,7 +31,8 @@ import {NgModule} from '@angular/core';
     ButtonModule,
     RichTextEditorAllModule,
     ComponentsModule,
-    TooltipModule
+    TooltipModule,
+    ToastModule
   ],
   exports: [AdminComponent]
 })

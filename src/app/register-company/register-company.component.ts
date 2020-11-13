@@ -38,10 +38,10 @@ export class RegisterCompanyComponent implements OnInit {
 
       console.log('Anunciante: ', response);
 
-  }).catch(error => {
-    this.loading = false;
-    console.log(error);
-  });
+    }).catch(error => {
+      this.loading = false;
+      console.log(error);
+    });
   }
 
 }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {AdminModule} from './admin/admin.module';
 
@@ -27,6 +27,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatDialogModule} from '@angular/material/dialog';
 import { LoadingComponent } from './loading/loading.component';
 import {CardModule} from 'primeng/card';
+import {HttpInterceptorService} from './_services/http-interceptor.service';
 
 // import {EditorModule} from 'primeng/editor';
 // import {ButtonModule} from 'primeng/button';
@@ -61,7 +62,7 @@ import {CardModule} from 'primeng/card';
     AdminModule,
     CardModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [[{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}]],
+bootstrap: [AppComponent]
 })
 export class AppModule { }

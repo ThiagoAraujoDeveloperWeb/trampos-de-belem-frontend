@@ -13,7 +13,7 @@ export class AuthenticationService extends BaseService {
   ) { super(http); }
 
   autenticar(usuario) {
-    return super.post('login', usuario)
+    return super.post('login', usuario);
   }
 
   entrar(usuario) {

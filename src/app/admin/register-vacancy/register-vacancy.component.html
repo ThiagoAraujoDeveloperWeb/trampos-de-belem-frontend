@@ -13,13 +13,18 @@
     </div>
     <div class="col-md-12">
       <label class="label-text-input">Título*</label>
-      <input mdbInput type="text" class="form-control " placeholder="Exemplo: Cabelereiro">
+      <input mdbInput
+             type="text"
+             class="form-control"
+             name="title"
+             [(ngModel)]="vacancy.title"
+             placeholder="Exemplo: Cabelereiro">
     </div>
     <!-- Grid column -->
 
     <div class="col-md-12">
       <label class="label-text-input">Tipo da Vaga*</label>
-      <select class="browser-default custom-select" name="city">
+      <select class="browser-default custom-select" name="type_vacancy" [(ngModel)]="vacancy.type_vacancy">
         <option selected>Selecione</option>
         <option value="clt">CLT</option>
         <option value="autonomo">Autônomo</option>
@@ -38,7 +43,7 @@
         Adicione tudo a respeito da vaga. HÁ!!! Se quiser adicione o valor também, fique a vontade é só uma dica (hehehe)
       </div>
       <p-editor name="text"
-                [(ngModel)]="text"
+                [(ngModel)]="vacancy.description_vacancy"
                 [style]="{'height':'320px'}"
                 placeholder="Escreva algo ..."></p-editor><br>
     </div>
@@ -47,6 +52,7 @@
       <button pButton
               pRipple
               type="button"
+              (click)="salvar()"
               label="Publicar"
               class="p-button-secondary"></button>
 

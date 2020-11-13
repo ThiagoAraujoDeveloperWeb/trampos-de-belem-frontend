@@ -15,7 +15,10 @@ export class CandidateService extends BaseService{
   }
 
   cadastrarAnunciante(user: any) {
-    console.log('OBEJTO:', user)
     return super.post('users', user);
+  }
+
+  cadastrarVaga(vaga: any) {
+    return super.post('register_vacancies', vaga);
   }
 }

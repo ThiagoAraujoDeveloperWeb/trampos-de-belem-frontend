@@ -11,8 +11,8 @@ export class HttpInterceptorService implements HttpInterceptor {
   ) {}
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token = '';
-    if (localStorage.getItem('viverbelem')) {
-      const user = JSON.parse(localStorage.getItem('viverbelem'));
+    if (localStorage.getItem('tramposdebelem')) {
+      const user = JSON.parse(localStorage.getItem('tramposdebelem'));
       token = user.token;
     }
     const dupReq = req.clone({
