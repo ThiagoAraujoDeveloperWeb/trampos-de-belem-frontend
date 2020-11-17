@@ -13,6 +13,7 @@
               <th style="text-align: center;">Título</th>
               <th style="text-align: center;">Tipo da vaga</th>
               <th style="text-align: center;">Vaga Preenchida?</th>
+              <th style="text-align: center;">Vaga Expirada?</th>
               <th style="text-align: center;">Data de publicação</th>
               <th style="text-align: center;">Ações</th>
           </tr>
@@ -26,22 +27,34 @@
                   {{ vacancy.vacancy_filled == false ? 'Não' : 'Sim' }}
                 </span>
               </td>
-              <td style="text-align: center;">{{ vacancy.created_at | date: 'dd/MM/yyyy hh:mm' }}</td>
+
+              <td style="text-align: center;">
+                <span class="{{ checkVacancies(vacancy.expired)}}">
+                  {{ vacancy.expired == false ? 'Não' : 'Sim' }}
+                </span>
+              </td>
+              <td style="text-align: center;">{{ vacancy.created_at | date: 'dd/MM/yyyy hh:mm a' }}</td>
               <td style="text-align: center;">
                 <button pButton
                         pRipple
                         type="button"
                         label="Editar"
                         (click)="editar(vacancy.id)"
-                        class="p-button-warning"></button>
+                        class="p-button-warning p-button-sm"></button>
+
+                <button pButton
+                        pRipple
+                        type="button"
+                        label="Preenchida"
+                        style="margin-left: 1%;"
+                        (click)="vacancy_filled(vacancy.id, vacancy)"
+                        [disabled]="vacancy.vacancy_filled == false ? false : true"
+                        class="p-button-success p-button-sm"></button>
               </td>
           </tr>
       </ng-template>
       <ng-template pTemplate="paginatorleft">
-          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
-      </ng-template>
-      <ng-template pTemplate="paginatorright">
-          <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+          <p-button type="button" icon="pi pi-plus" pTooltip="Registrar outra vaga" (onClick)="registrarVaga()" styleClass="p-button-text"></p-button>
       </ng-template>
   </p-table>
 </div>

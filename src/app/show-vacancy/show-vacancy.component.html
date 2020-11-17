@@ -1,0 +1,22 @@
+<app-header></app-header>
+
+<app-loading [loading]="loading"></app-loading>
+
+<br><br>
+<p-card header="{{vacancy.title }} - {{vacancy.type_vacancy }}" [style]="{'width': '90%', 'margin-left': '5%', 'margin-bottom': '2em'}" *ngIf="liberaCard">
+  <div class="company-name">
+    <b>Publicado por:</b> {{ vacancy.name_company }}
+    <br><b>Dia:</b> {{ vacancy.created_at | date: 'dd/MM/yyyy' }}
+    <br><b>Expira dia:</b> {{ vacancy.vacancy_expired | date: 'dd/MM/yyyy' }}
+    <br><b>Site da Empresa: </b> <a href="{{vacancy.company_website}}" target="_blank">{{vacancy.company_website}}</a></div>
+  <hr>
+  <br>
+  <div [innerHTML]="vacancy.description_vacancy"></div>
+
+  <ng-template pTemplate="footer">
+    <h3>Informações para contato</h3>
+    <hr><br>
+
+    <div [innerHTML]="vacancy.contact_information"></div>
+  </ng-template>
+</p-card>

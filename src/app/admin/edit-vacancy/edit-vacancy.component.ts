@@ -13,10 +13,15 @@ import {MessageService} from 'primeng/api';
 export class EditVacancyComponent implements OnInit {
   vacancy = {
     user_id: JSON.parse(localStorage.getItem('tramposdebelem')).user.id,
+    name_user_publish: JSON.parse(localStorage.getItem('tramposdebelem')).user.fullName,
     title: '',
     type_vacancy: '',
     description_vacancy: '',
-    vacancy_expired: ''
+    vacancy_expired: '',
+    contact_information: '',
+    name_company: '',
+    company_website: '',
+    location: ''
   };
 
   pt = {
@@ -68,6 +73,10 @@ export class EditVacancyComponent implements OnInit {
       this.vacancy.type_vacancy = response.vacancy.type_vacancy;
       this.vacancy.description_vacancy = response.vacancy.description_vacancy;
       this.vacancy.vacancy_expired = this.datePipe.transform(response.vacancy_expired, 'dd/MM/yyyy');
+      this.vacancy.contact_information = response.vacancy.contact_information;
+      this.vacancy.name_company = response.vacancy.name_company;
+      this.vacancy.company_website = response.vacancy.company_website;
+      this.vacancy.location = response.vacancy.location;
     }).catch(error => {
       this.loading = false;
       console.log(error);
@@ -75,31 +84,69 @@ export class EditVacancyComponent implements OnInit {
   }
 
   atualizar() {
-    this.loading = true;
-    this.candidateSrv.atualizarVaga(this.idVacancy, this.vacancy).then((response: any) => {
-      this.loading = false;
+    if (this.validarVaga()){
+      this.loading = true;
+      this.candidateSrv.atualizarVaga(this.idVacancy, this.vacancy).then((response: any) => {
+        this.loading = false;
 
-      if (response.status === 'error') {
+        if (response.status === 'error') {
+          this.messageService.add(
+            { severity: 'success', summary: 'Erro', detail: response.message }
+          );
+        }
+
         this.messageService.add(
-          { severity: 'success', summary: 'Erro', detail: response.message }
+          { severity: 'success', summary: 'Sucesso', detail: response.message }
         );
-      }
+        this.router.navigate(['admin/listar-vagas']);
 
-      this.messageService.add(
-        { severity: 'success', summary: 'Sucesso', detail: response.message }
-      );
-
-      this.vacancy.description_vacancy = '';
-      this.vacancy.type_vacancy = '';
-      this.vacancy.title = '';
-    }).catch(error => {
-      this.loading = false;
-      console.log(error);
-    });
+        this.vacancy.description_vacancy = '';
+        this.vacancy.contact_information = '';
+        this.vacancy.type_vacancy = '';
+        this.vacancy.title = '';
+      }).catch(error => {
+        this.loading = false;
+        console.log(error);
+      });
+    }
   }
 
   cancelar() {
     this.router.navigate(['admin/dashboard']);
+  }
+
+  validarVaga() {
+    if (this.vacancy.title === '') {
+      this.messageService.add(
+        { severity: 'error', summary: 'Erro', detail: 'Preencha o campo TITULO' }
+      );
+    } else if (this.vacancy.type_vacancy === '') {
+      this.messageService.add(
+        { severity: 'error', summary: 'Erro', detail: 'Preencha o campo TIPO DA VAGA' }
+      );
+    } else if (this.vacancy.description_vacancy === '') {
+      this.messageService.add(
+        { severity: 'error', summary: 'Erro', detail: 'Preencha o campo DESCRIÇAO DA VAGA' }
+      );
+    } else if (this.vacancy.vacancy_expired === '') {
+      this.messageService.add(
+        { severity: 'error', summary: 'Erro', detail: 'Preencha o campo DATA PARA EXPIRAR' }
+      );
+    } else if (this.vacancy.name_company === '') {
+      this.messageService.add(
+        { severity: 'error', summary: 'Erro', detail: 'Preencha o campo NOME DA EMPRESA' }
+      );
+    } else if (this.vacancy.location === '') {
+      this.messageService.add(
+        { severity: 'error', summary: 'Erro', detail: 'Preencha o campo LOCALIZAÇÃO' }
+      );
+    } else if (this.vacancy.contact_information === '') {
+      this.messageService.add(
+        { severity: 'error', summary: 'Erro', detail: 'Preencha o campo INFORMACOES PARA CONTATO' }
+      );
+    } else {
+      return true;
+    }
   }
 
 }

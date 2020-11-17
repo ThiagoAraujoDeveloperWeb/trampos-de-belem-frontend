@@ -21,7 +21,8 @@ import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
 import {MenuModule} from 'primeng/menu';
 import {NgModule} from '@angular/core';
-import { EditVacancyComponent } from './edit-vacancy/edit-vacancy.component';
+
+import {EditVacancyComponent} from './edit-vacancy/edit-vacancy.component';
 
 @NgModule({
   declarations: [

@@ -1,31 +1,13 @@
 <app-header></app-header>
 
-<div class="card">
-
-  <!-- <div class="p-d-flex p-jc-center">
-    <div class="p-mr-2 vagas-totais">
-      TEMOS {{vagasTotal}} VAGA(S) EM ABERTO
-    </div>
-  </div>
-  <br><br> -->
-
+<div class="card p-grid">
   <p-card header="TEMOS {{vagasTotal}} VAGA(S) EM ABERTO"
-          subheader="Veja as vagas que temos e se gostar você pode se candidatar sem preencher formulário, Simples e rápido!"
+          subheader="Veja as vagas que temos e se gostar você pode se candidatar mandando seu currículo, Simples e rápido!"
           [style]="{width: '100%'}"
           class="p-card-header"
           styleClass="p-card-shadow">
-
   </p-card>
-  <!-- <div class="p-d-flex p-jc-center">
-    <div class="p-mr-2">
-      <div class="p-field">
-        <input id="search" type="text" placeholder="Palavra Chave" pInputText>
-      </div>
-    </div>
-
-    <div class="p-col-12 p-mb-2 p-md-2">
-      <button mat-raised-button color="success">Buscar</button>
-    </div>
-  </div> -->
 
 </div>
+<br>
+<app-vacancies></app-vacancies>

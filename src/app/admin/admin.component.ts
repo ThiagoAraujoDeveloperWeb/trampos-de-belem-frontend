@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
   showFiller = false;
   visibleSidebar1 = false;
   items: MenuItem[];
+  nomeUsuario = JSON.parse(localStorage.getItem('tramposdebelem')).user.fullName;
 
   constructor(public authSrv: AuthenticationService) { }
 

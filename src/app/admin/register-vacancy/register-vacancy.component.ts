@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import {Router} from '@angular/router';
 import {CandidateService} from '../../_services/candidate.service';
 import {UtilsService} from '../../_services/utils.service';
+import {Router, ActivatedRoute} from '@angular/router';
 import {MessageService} from 'primeng/api';
 
 @Component({
@@ -15,10 +15,15 @@ import {MessageService} from 'primeng/api';
 export class RegisterVacancyComponent implements OnInit {
   vacancy = {
     user_id: JSON.parse(localStorage.getItem('tramposdebelem')).user.id,
+    name_user_publish: JSON.parse(localStorage.getItem('tramposdebelem')).user.fullName,
     title: '',
     type_vacancy: '',
     description_vacancy: '',
-    vacancy_expired: ''
+    vacancy_expired: '',
+    contact_information: '',
+    name_company: '',
+    company_website: '',
+    location: ''
   };
   pt = {
     firstDayOfWeek: 1,
@@ -43,6 +48,7 @@ export class RegisterVacancyComponent implements OnInit {
     public router: Router,
     public candidateSrv: CandidateService,
     private messageService: MessageService,
+    public activatedRoute: ActivatedRoute,
     public utilsSrv: UtilsService
   ) { }
 
@@ -101,6 +107,18 @@ export class RegisterVacancyComponent implements OnInit {
     } else if (this.vacancy.vacancy_expired === '') {
       this.messageService.add(
         { severity: 'error', summary: 'Erro', detail: 'Preencha o campo DATA PARA EXPIRAR' }
+      );
+    } else if (this.vacancy.name_company === '') {
+      this.messageService.add(
+        { severity: 'error', summary: 'Erro', detail: 'Preencha o campo NOME DA EMPRESA' }
+      );
+    } else if (this.vacancy.location === '') {
+      this.messageService.add(
+        { severity: 'error', summary: 'Erro', detail: 'Preencha o campo LOCALIZAÇÃO' }
+      );
+    } else if (this.vacancy.contact_information === '') {
+      this.messageService.add(
+        { severity: 'error', summary: 'Erro', detail: 'Preencha o campo INFORMACOES PARA CONTATO' }
       );
     } else {
       return true;

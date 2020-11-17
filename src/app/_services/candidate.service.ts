@@ -22,15 +22,31 @@ export class CandidateService extends BaseService{
     return super.get(`find_vacancy/${id}`);
   }
 
+  getVaga(id) {
+    return super.get(`find_vacancy_public/${id}`);
+  }
+
+  getVagas() {
+    return super.get(`vacancies_for_candates`);
+  }
+
+  getUser(idUser) {
+    return super.get(`get_advertiser/${idUser}`);
+  }
+
   cadastrarAnunciante(user: any) {
     return super.post('users', user);
   }
 
-  cadastrarVaga(vaga: any) {
-    return super.post('register_vacancies', vaga);
+  cadastrarVaga(vacancy: any) {
+    return super.post('register_vacancies', vacancy);
   }
 
-  atualizarVaga(id, vaga) {
-    return super.put(`update_vacancy/${id}`, vaga);
+  atualizarVaga(id, vacancy) {
+    return super.put(`update_vacancy/${id}`, vacancy);
   }
+
+  // vacancyFilled(idVacancy, vacancy) {
+  //   return super.put(`vacancy_filled/${idVacancy}`, vacancy);
+  // }
 }

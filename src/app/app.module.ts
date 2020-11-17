@@ -1,37 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import {AdminModule} from './admin/admin.module';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { MatSliderModule } from '@angular/material/slider';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RegisterCompanyComponent } from './register-company/register-company.component';
-import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './header/header.component';
-// import { AdminComponent } from './admin/admin.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIconModule} from '@angular/material/icon';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {ComponentsModule} from './_components/components.module';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
-import { LoadingComponent } from './loading/loading.component';
+import {AppRoutingModule} from './app-routing.module';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {AdminModule} from './admin/admin.module';
+import {FormsModule} from '@angular/forms';
+import {ButtonModule} from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
 import {CardModule} from 'primeng/card';
+
 import {HttpInterceptorService} from './_services/http-interceptor.service';
 
-// import {EditorModule} from 'primeng/editor';
-// import {ButtonModule} from 'primeng/button';
-
+import {RegisterCompanyComponent} from './register-company/register-company.component';
+import {ShowVacancyComponent} from './show-vacancy/show-vacancy.component';
+import {HeaderComponent} from './_components/header/header.component';
+import {VacanciesComponent} from './vacancies/vacancies.component';
+import {LoginComponent} from './login/login.component';
+import {HomeComponent} from './home/home.component';
+import {AppComponent} from './app.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +39,13 @@ import {HttpInterceptorService} from './_services/http-interceptor.service';
     RegisterCompanyComponent,
     LoginComponent,
     HeaderComponent,
-    LoadingComponent,
+    VacanciesComponent,
+    ShowVacancyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ComponentsModule,
     BrowserAnimationsModule,
     MatSliderModule,
     MatButtonModule,
@@ -60,7 +61,9 @@ import {HttpInterceptorService} from './_services/http-interceptor.service';
     MatProgressSpinnerModule,
     MatDialogModule,
     AdminModule,
-    CardModule
+    CardModule,
+    ButtonModule,
+    ToastModule
   ],
   providers: [[{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}]],
 bootstrap: [AppComponent]
