@@ -21,7 +21,8 @@ export class EditVacancyComponent implements OnInit {
     contact_information: '',
     name_company: '',
     company_website: '',
-    location: ''
+    location: '',
+    about_company: ''
   };
 
   pt = {
@@ -77,6 +78,7 @@ export class EditVacancyComponent implements OnInit {
       this.vacancy.name_company = response.vacancy.name_company;
       this.vacancy.company_website = response.vacancy.company_website;
       this.vacancy.location = response.vacancy.location;
+      this.vacancy.about_company = response.vacancy.about_company;
     }).catch(error => {
       this.loading = false;
       console.log(error);

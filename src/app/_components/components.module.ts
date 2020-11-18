@@ -1,11 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LoadingComponent } from './loading/loading.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {LoadingComponent} from './loading/loading.component';
+import {FooterComponent} from './footer/footer.component';
 import {DialogModule} from 'primeng/dialog';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
-
-
-
 
 @NgModule({
   declarations: [LoadingComponent],

@@ -27,6 +27,7 @@ import {HttpInterceptorService} from './_services/http-interceptor.service';
 import {RegisterCompanyComponent} from './register-company/register-company.component';
 import {ShowVacancyComponent} from './show-vacancy/show-vacancy.component';
 import {HeaderComponent} from './_components/header/header.component';
+import {FooterComponent} from './_components/footer/footer.component';
 import {VacanciesComponent} from './vacancies/vacancies.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
@@ -40,7 +41,8 @@ import {AppComponent} from './app.component';
     LoginComponent,
     HeaderComponent,
     VacanciesComponent,
-    ShowVacancyComponent
+    ShowVacancyComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

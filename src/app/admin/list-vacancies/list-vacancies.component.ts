@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CandidateService} from '../../_services/candidate.service';
+import {ConfirmationService} from 'primeng/api';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
 
@@ -7,14 +8,16 @@ import {Router} from '@angular/router';
   selector: 'app-list-vacancies',
   templateUrl: './list-vacancies.component.html',
   styleUrls: ['./list-vacancies.component.css'],
-  providers: [MessageService]
+  providers: [MessageService, ConfirmationService]
 })
 export class ListVacanciesComponent implements OnInit {
   vacancies = [];
   loading = false;
+  position: string;
 
   constructor(
     private messageService: MessageService,
+    private confirmationService: ConfirmationService,
     public candidateSrv: CandidateService,
     public router: Router
   ) { }
@@ -53,26 +56,37 @@ export class ListVacanciesComponent implements OnInit {
   }
 
   vacancy_filled(idVacancy, vacancy) {
-    vacancy.vacancy_filled = true;
+    this.confirmationService.confirm({
+      message: 'Essa ação não tem volta e a vaga não ficará mais visível na página inicial.',
+      header: 'Deseja preencher a vaga?',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        vacancy.vacancy_filled = true;
 
-    this.loading = true;
-    this.candidateSrv.atualizarVaga(idVacancy, vacancy).then((response: any) => {
-      this.loading = false;
+        this.loading = true;
+        this.candidateSrv.atualizarVaga(idVacancy, vacancy).then((response: any) => {
+          this.loading = false;
 
-      if (response.status === 'error') {
-        this.messageService.add(
-          { severity: 'error', summary: 'Erro', detail: response.message }
-        );
-      }
+          if (response.status === 'error') {
+            this.messageService.add(
+              { severity: 'error', summary: 'Erro', detail: response.message }
+            );
+          }
 
-      this.messageService.add(
-        { severity: 'success', summary: 'Sucesso', detail: response.message }
-      );
-      console.log(response);
+          this.messageService.add(
+            { severity: 'success', summary: 'Sucesso', detail: response.message }
+          );
+          console.log(response);
 
-    }).catch(error => {
-      this.loading = false;
-      console.log(error);
+        }).catch(error => {
+          this.loading = false;
+          console.log(error);
+        });
+      },
+      reject: () => {
+        this.messageService.add({severity: 'info', summary: 'Infor', detail: 'Preenchimento de vaga não foi confirmada.'});
+      },
+      key: "positionDialog"
     });
   }
 

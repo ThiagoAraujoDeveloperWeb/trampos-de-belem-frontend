@@ -1,10 +1,12 @@
 import {RegisterVacancyComponent} from '../admin/register-vacancy/register-vacancy.component';
 import {ListVacanciesComponent} from './list-vacancies/list-vacancies.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 import {AdminComponent} from './admin.component';
 
 import {RichTextEditorAllModule} from '@syncfusion/ej2-angular-richtexteditor';
 import {ComponentsModule} from '../_components/components.module';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from '../app-routing.module';
 import {HttpClientModule} from '@angular/common/http';
@@ -34,6 +36,8 @@ import {EditVacancyComponent} from './edit-vacancy/edit-vacancy.component';
   ],
   imports: [
     RichTextEditorAllModule,
+    InputTextareaModule,
+    ConfirmDialogModule,
     AppRoutingModule,
     HttpClientModule,
     ComponentsModule,

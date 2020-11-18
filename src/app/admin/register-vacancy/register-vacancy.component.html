@@ -87,6 +87,11 @@
                      class="p-invalid"
                      *ngIf="vacancy.type_vacancy == ''">Tipo da vaga é obrigatório.</small>
     </div>
+
+    <div class="col-md-12">
+      <label class="label-text-input">Sobre a empresa*</label><br>
+      <textarea pInputTextarea rows="8" cols="130" name="about_company" [(ngModel)]="vacancy.about_company"></textarea>
+    </div>
     <!-- Grid column -->
     <div class="col-md-12">
       <label class="label-text-input">Descrição da Vaga*</label><br>

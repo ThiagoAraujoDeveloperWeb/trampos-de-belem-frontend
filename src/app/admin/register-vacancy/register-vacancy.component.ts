@@ -23,7 +23,8 @@ export class RegisterVacancyComponent implements OnInit {
     contact_information: '',
     name_company: '',
     company_website: '',
-    location: ''
+    location: '',
+    about_company: ''
   };
   pt = {
     firstDayOfWeek: 1,
@@ -81,9 +82,7 @@ export class RegisterVacancyComponent implements OnInit {
           { severity: 'success', summary: 'Sucesso', detail: response.message }
         );
 
-        this.vacancy.description_vacancy = '';
-        this.vacancy.type_vacancy = '';
-        this.vacancy.title = '';
+        this.router.navigate(['admin/listar-vagas']);
       }).catch(error => {
         this.loading = false;
         console.log(error);
@@ -119,6 +118,10 @@ export class RegisterVacancyComponent implements OnInit {
     } else if (this.vacancy.contact_information === '') {
       this.messageService.add(
         { severity: 'error', summary: 'Erro', detail: 'Preencha o campo INFORMACOES PARA CONTATO' }
+      );
+    } else if (this.vacancy.about_company === '') {
+      this.messageService.add(
+        { severity: 'error', summary: 'Erro', detail: 'Preencha o campo SOBRE A EMPRESA' }
       );
     } else {
       return true;

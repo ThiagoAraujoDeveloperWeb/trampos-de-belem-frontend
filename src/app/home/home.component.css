@@ -1,3 +1,42 @@
-.p-card-header {
+::ng-deep .p-card-header {
   text-align: center;
+  font-size: 30px;
+}
+
+::ng-deep .p-card {
+  margin-top: 3%;
+  height: 50%;
+}
+
+.main-banner__head {
+  margin-top: 100px;
+}
+
+@media (max-width: 420px) {
+  .main-banner__head {
+    margin-top: 50px;
+    display: block;
+  }
+}
+
+.text-h1 {
+  padding-bottom: 16px;
+  font-size:5vw;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+@media (max-width: 850px){
+  .text-h1 {
+      width: 90%;
+      font-size:6vw;
+      margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .text-h1 {
+    width: 75%;
+    font-size:8vw;
+}
 }

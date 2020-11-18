@@ -1,13 +1,13 @@
 <app-header></app-header>
 
-<div class="card p-grid">
-  <p-card header="TEMOS {{vagasTotal}} VAGA(S) EM ABERTO"
-          subheader="Veja as vagas que temos e se gostar você pode se candidatar mandando seu currículo, Simples e rápido!"
-          [style]="{width: '100%'}"
-          class="p-card-header"
-          styleClass="p-card-shadow">
+<p-card [style]="{width: '100%'}"
+        class="p-card-header p-card"
+        styleClass="p-card-shadow">
+        <div class="main-banner__head">
+          <h1 class="text-h1">TEMOS {{vagasTotal}} VAGA(S) Publicadas</h1>
+          <p>Veja as vagas que temos e se gostar você pode se candidatar mandando seu currículo, simples e rápido!</p>
+        </div>
   </p-card>
-
-</div>
 <br>
 <app-vacancies></app-vacancies>
+<app-footer></app-footer>

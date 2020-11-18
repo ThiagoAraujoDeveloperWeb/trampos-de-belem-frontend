@@ -1,20 +1,30 @@
 <app-loading [loading]="loading"></app-loading>
 
-<p-card [style]="{'width': '80%', 'margin-left': '10%', 'margin-bottom': '2em'}">
-  <h2 *ngIf="vacanciesForCandidates.length === 0" style="color: brown; text-align: center;"> Não temos vagas no momento :(</h2>
-  <article class="job-card" *ngFor="let vacancy of vacanciesForCandidates">
-    <!-- <div class="company-logo-img">
-      <img src="" />
-    </div> -->
-    <div class="job-title" style="cursor: pointer;" (click)="exibirVaga(vacancy.id)">{{vacancy.title}} - {{vacancy.type_vacancy}}</div>
-    <div class="company-name"><b>Publicado por:</b> {{ vacancy.name_company }} - <b>Dia:</b> {{ vacancy.created_at | date: 'dd/MM/yy' }} e <b>Expira dia:</b> {{ vacancy.vacancy_expired | date: 'dd/MM/yyyy' }}</div>
-    <div class="skills-container">
-      <!-- <div class="skill">Photoshop</div> TAGS
-      <div class="skill">Illustrator</div>
-      <div class="skill">HTML</div> -->
+<div class="container-fluid p-grid">
+  <div class="d-md-inline-flex row justify-content-center p-col">
+    <div class="card box" style="width: 25rem;" *ngFor="let vacancy of vacanciesForCandidates">
+      <div class="card-body">
+        <div class="row justify-content-between">
+          <div class="col-auto col-sm-auto">
+            <h4> <span class="badge badge-pill badge-success text-white ">{{ vacancy.type_vacancy }}</span></h4>
+          </div>
+          <div class="col-auto col-sm-auto">
+            <div class="row mx-auto pt-2">
+              <h5>Publicado dia: {{vacancy.created_at | date: 'dd/MM/yyyy'}}</h5>
+            </div>
+          </div>
+        </div>
+        <h5 class="card-title font-weight-bold">{{vacancy.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{vacancy.name_company}}</h6>
+        <div>
+          <hr class="hl">
+        </div>
+        <div class="card-footer border-0 text-center mx-auto ">
+          <h5 class="footer" (click)="exibirVaga(vacancy.id)" style="cursor: pointer;"> Exibir Vaga</h5>
+        </div>
+      </div>
     </div>
-    <!-- <button class="apply">Me-Candidatar</button> -->
-    <!-- <button class="save">Save Job</button> -->
-    <!-- <a href="#" (click)="exibirVaga(vacancy.id)"></a> -->
-  </article><br><br>
-</p-card>
+  </div>
+</div>
+
+

@@ -33,7 +33,6 @@ export class ShowVacancyComponent implements OnInit {
           this.liberaCard = true;
           this.candidateSrv.getVaga(params.id).then((response: any) => {
             this.vacancy = response.vacancy;
-            console.log(this.vacancy);
           }).catch(error => {
             this.loading = false;
             console.log(error);
