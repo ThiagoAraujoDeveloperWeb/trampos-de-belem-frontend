@@ -47,6 +47,7 @@ div.content {
 
 ::ng-deep .p-menu {
   width: 110.5%;
+  margin-top: 5%;
   margin-left: -5%;
 }
 

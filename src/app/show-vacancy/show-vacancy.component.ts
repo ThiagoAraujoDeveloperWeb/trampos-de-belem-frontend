@@ -25,14 +25,18 @@ export class ShowVacancyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getVacancy();
+  }
+
+  getVacancy() {
     this.activatedRoute.params.subscribe(params => {
       if (params) {
         this.loading = true;
         setTimeout(() => {
-          this.loading = false;
-          this.liberaCard = true;
           this.candidateSrv.getVaga(params.id).then((response: any) => {
             this.vacancy = response.vacancy;
+            this.loading = false;
+            this.liberaCard = true;
           }).catch(error => {
             this.loading = false;
             console.log(error);

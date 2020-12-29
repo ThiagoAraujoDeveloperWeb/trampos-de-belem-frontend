@@ -1,6 +1,77 @@
 <app-header></app-header>
 
-<mat-card class="card-login">
+
+<div class="login">
+  <div class="login-form">
+    <div class="login-header">
+      <h1 style="color: black;">Entre e divulgue uma vaga</h1>
+    </div><br>
+    <div class="alert alert-danger" role="alert" *ngIf="erro">
+      {{msg}}
+    </div>
+    <h3 style="color: black;">E-mail:</h3>
+    <!-- <input type="text" placeholder="Username"/><br> -->
+    <input type="text"
+             name="email"
+             placeholder="E-mail"
+             id="defaultLoginFormEmail"
+             [(ngModel)]="anunciante.email"
+             pInputText>
+
+    <h3 style="color: black;">Senha:</h3>
+    <!-- <input type="password" placeholder="Password"/> -->
+    <input type="password"
+             name="password"
+             placeholder="Senha"
+             id="defaultLoginFormPassword"
+             [(ngModel)]="anunciante.password"
+             pInputText>
+    <br>
+    <!-- <input type="button" value="Login" class="login-button"/> -->
+    <button mat-raised-button
+        color="warn"
+        class="form-control"
+        style="width: 40%; margin: auto; margin-top: 5%;"
+        [class.spinner]="loading" [disabled]="loading"
+        (click)="entrar()">Entrar</button>
+    <br>
+    <!-- <a class="sign-up">Sign Up!</a> -->
+    <!-- <h6 class="no-access">Can't access your account?</h6> -->
+  </div>
+</div>
+
+<!--
+<div class="p-fluid card-login">
+  <div class="p-field">
+      <label for="firstname1">E-mail</label>
+
+      <input type="email"
+             name="email"
+             placeholder="E-mail"
+             class="form-control mb-4"
+             id="defaultLoginFormEmail"
+             [(ngModel)]="anunciante.email"
+             pInputText>
+  </div>
+  <div class="p-field">
+      <label for="lastname1">Senha</label>
+
+      <input type="password"
+             name="password"
+             class="form-control mb-4"
+             id="defaultLoginFormPassword"
+             [(ngModel)]="anunciante.password"
+             pInputText>
+  </div>
+
+  <button mat-raised-button
+          color="warn"
+          class="form-control mb-4"
+          [class.spinner]="loading" [disabled]="loading"
+          (click)="entrar()">Entrar</button>
+</div> -->
+
+<!-- <mat-card class="card-login">
   <form class="text-center border border-light p-5">
 
     <p class="h4 mb-4">ENTRAR</p>
@@ -9,13 +80,6 @@
     <div class="alert alert-danger" role="alert" *ngIf="erro">
       {{msg}}
     </div>
-
-    <input type="email"
-           id="defaultLoginFormEmail"
-           class="form-control mb-4"
-           name="email"
-           [(ngModel)]="anunciante.email"
-           placeholder="E-mail">
 
     <input type="password"
            id="defaultLoginFormPassword"
@@ -31,4 +95,4 @@
             (click)="entrar()">Entrar</button>
 
   </form>
-</mat-card>
+</mat-card> -->

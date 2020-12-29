@@ -4,6 +4,7 @@
 }
 
 ::ng-deep .p-card {
+  width: auto;
   margin-top: 3%;
   height: 50%;
 }
@@ -36,7 +37,7 @@
 
 @media (max-width: 600px) {
   .text-h1 {
-    width: 75%;
+    width: 100%;
     font-size:8vw;
 }
 }

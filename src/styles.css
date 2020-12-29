@@ -105,4 +105,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .header-right {
     float: none;
   }
+
+  .logo-jobs {
+    margin: 0 auto;
+  }
 }

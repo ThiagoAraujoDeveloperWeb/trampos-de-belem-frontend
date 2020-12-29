@@ -1,7 +1,8 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark header-admin">
   <!-- <p-button type="button" (click)="visibleSidebar1 = true" icon="pi pi-bars" class="p-button"></p-button> -->
   <i class="pi pi-bars bars-button" (click)="visibleSidebar1 = true"></i>
-  <a class="navbar-brand" style="margin-left: 15px;" routerLink="dashboard">List Jobs</a>
+  <!-- <a class="navbar-brand" style="margin-left: 15px;" routerLink="dashboard">SmallDev-Jobs</a> -->
+
   <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
   <!-- Navbar Search-->
   <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -33,9 +34,14 @@
 </div>
 
 <p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
-  <h1 style="font-weight:normal; margin-left: 15px;">
-    List Jobs</h1>
-    <hr>
+  <!-- <h1 style="font-weight:normal; margin-left: 15px;">
+
+    SmallDev-Jobs</h1> -->
+    <img src="./assets/img/logojobs.png"
+         alt="SmallDev-jobs"
+         class="logo-jobs"
+         routerLink=""
+         style="width: 70%; cursor: pointer;">
 
     <!-- <p-panelMenu [model]="items"></p-panelMenu> -->
     <p-menu [model]="items" styleClass="p-menu"></p-menu>
