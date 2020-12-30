@@ -48,7 +48,7 @@ export class ListVacanciesComponent implements OnInit {
   }
 
   editar(idVacancy) {
-    this.router.navigate([`admin/editar-vaga/`, idVacancy]);
+    this.router.navigate([`admin/registrar-vaga/`, idVacancy]);
   }
 
   registrarVaga(){

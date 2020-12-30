@@ -57,9 +57,41 @@ export class RegisterVacancyComponent implements OnInit {
     this.loading = true;
 
     setTimeout(() => {
+      this.activatedRoute.params.subscribe(params => {
+        if (params) {
+          this.leberarForm = true;
+          this.loading = false;
+
+          this.getVacancy(params);
+        } else {
+        }
+      });
       this.leberarForm = true;
       this.loading = false;
     }, 2000);
+  }
+
+  getVacancy(params: any) {
+    this.loading = true;
+    this.candidateSrv.buscaVaga(params.id).then((response: any) => {
+      this.loading = false;
+      this.vacancy.title = response.vacancy.title;
+      this.vacancy.name_company = response.vacancy.name_company;
+      this.vacancy.company_website = response.vacancy.company_website;
+      this.vacancy.location = response.vacancy.location;
+      this.vacancy.type_vacancy = response.vacancy.type_vacancy;
+      this.vacancy.about_company = response.vacancy.about_company;
+      this.vacancy.description_vacancy = response.vacancy.description_vacancy;
+      this.vacancy.vacancy_expired = '';
+      this.vacancy.contact_information = response.vacancy.contact_information;
+
+
+
+
+    }).catch(error => {
+      this.loading = false;
+      console.log(error);
+    });
   }
 
   cancelar() {

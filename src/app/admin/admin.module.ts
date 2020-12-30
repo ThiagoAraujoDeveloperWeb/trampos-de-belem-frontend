@@ -24,15 +24,12 @@ import {ToastModule} from 'primeng/toast';
 import {MenuModule} from 'primeng/menu';
 import {NgModule} from '@angular/core';
 
-import {EditVacancyComponent} from './edit-vacancy/edit-vacancy.component';
-
 @NgModule({
   declarations: [
     AdminComponent,
     DashboardComponent,
     RegisterVacancyComponent,
-    ListVacanciesComponent,
-    EditVacancyComponent
+    ListVacanciesComponent
   ],
   imports: [
     RichTextEditorAllModule,

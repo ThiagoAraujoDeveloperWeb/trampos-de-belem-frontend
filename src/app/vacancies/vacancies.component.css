@@ -4,6 +4,10 @@
   margin-top: 3%;
 }
 
+.card{
+  width: 100px;
+}
+
 .card-subtitle {
   text-align: center;
   font-size: 15px;

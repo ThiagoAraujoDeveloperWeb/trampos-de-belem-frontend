@@ -1,0 +1,38 @@
+<p-accordion>
+  <p-accordionTab responsive='true' header="Quer recber emails para está por dentro das vagas publicadas?">
+    <form>
+      <div class="container">
+        <h2>Receba notificações</h2>
+        <p>Adicione seu email e receba notificações de vagas assim que forem publicadas</p>
+      </div>
+
+      <div class="container" style="background-color:white">
+        <input type="text"
+             name="name"
+             placeholder="Nome"
+             [(ngModel)]="candidate.name"
+             pInputText>
+
+        <input type="text"
+             name="email"
+             placeholder="Seu melhor e-mail"
+             [(ngModel)]="candidate.email"
+             pInputText>
+        <label>
+          <input type="checkbox" checked="checked" name="subscribe"> Daily Newsletter
+        </label>
+      </div>
+
+      <div class="container">
+        <button type="submit"
+                color="warn"
+                class="form-control"
+                style="width: 40%; margin: auto; margin-top: 5%;"
+                [class.spinner]="loading" [disabled]="loading"
+                (click)="enviar()">Entrar</button>
+      </div>
+    </form>
+  </p-accordionTab>
+</p-accordion>
+
+<p-toast position="top-right"></p-toast>

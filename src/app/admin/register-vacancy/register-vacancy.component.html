@@ -57,16 +57,13 @@
     <div class="p-field p-col-12 p-md-6">
       <div class="p-field p-fluid">
         <label for="location">Localização*</label>
-        <input id="location"
-              type="text"
-              pInputText
-              name="location"
-              placeholder="Belém, PA"
-              [(ngModel)]="vacancy.location"
-              aria-describedby="username-help">
-              <small id="username2-help"
-                     class="p-invalid"
-                     *ngIf="vacancy.location == ''">Localização é obrigatório.</small>
+        <select class="browser-default custom-select" name="location" [(ngModel)]="vacancy.location" required>
+          <option selected>Selecione</option>
+          <option value="Belém/PA">Belém/PA</option>
+        </select>
+          <small id="username2-help"
+                  class="p-invalid"
+                  *ngIf="vacancy.location == ''">Localização é obrigatório.</small>
       </div>
     </div>
 
@@ -102,7 +99,7 @@
                       Por favor, para melhor usabilidade da plataforma adicione as informações de acordo com o que você está procurando em um candidato,
                       dessa forma vai melhorar a interação do candidato com a sua empresa e assim fazendo o trabalho fluir melhor :)
                     </div>
-      <p-editor name="text"
+      <p-editor name="description_vacancy"
                 [(ngModel)]="vacancy.description_vacancy"
                 [style]="{'height':'320px'}"
                 placeholder="Escreva algo ..."
@@ -114,7 +111,7 @@
       <small id="username2-help"
                      class="p-invalid"
                      *ngIf="vacancy.contact_information == ''">Informação para contato é obrigatório.</small>
-      <p-editor name="text"
+      <p-editor name="contact_information"
                 [(ngModel)]="vacancy.contact_information"
                 [style]="{'height':'100px'}"
                 placeholder="Escreva algo ..."

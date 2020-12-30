@@ -11,6 +11,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
+import {AccordionModule} from 'primeng/accordion';
 import {AppRoutingModule} from './app-routing.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatCardModule} from '@angular/material/card';
@@ -32,6 +33,7 @@ import {VacanciesComponent} from './vacancies/vacancies.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {AppComponent} from './app.component';
+import { EmailsCandidatesComponent } from './emails-candidates/emails-candidates.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import {AppComponent} from './app.component';
     HeaderComponent,
     VacanciesComponent,
     ShowVacancyComponent,
-    FooterComponent
+    FooterComponent,
+    EmailsCandidatesComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ import {AppComponent} from './app.component';
     AdminModule,
     CardModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    AccordionModule
   ],
   providers: [[{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}]],
 bootstrap: [AppComponent]

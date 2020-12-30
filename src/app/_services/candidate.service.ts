@@ -46,6 +46,10 @@ export class CandidateService extends BaseService{
     return super.put(`update_vacancy/${id}`, vacancy);
   }
 
+  emailsAlert(candidate: any){
+    return super.post('emails_alerts', candidate);
+  }
+
   // vacancyFilled(idVacancy, vacancy) {
   //   return super.put(`vacancy_filled/${idVacancy}`, vacancy);
   // }

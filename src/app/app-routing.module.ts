@@ -6,7 +6,6 @@ import { RegisterCompanyComponent } from './register-company/register-company.co
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { RegisterVacancyComponent } from './admin/register-vacancy/register-vacancy.component';
 import { ListVacanciesComponent } from './admin/list-vacancies/list-vacancies.component';
-import { EditVacancyComponent } from './admin/edit-vacancy/edit-vacancy.component';
 import { ShowVacancyComponent } from './show-vacancy/show-vacancy.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
@@ -25,7 +24,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'registrar-vaga', component: RegisterVacancyComponent },
       { path: 'listar-vagas', component: ListVacanciesComponent },
-      { path: 'editar-vaga/:id', component: EditVacancyComponent }
+      { path: 'registrar-vaga/:id', component: RegisterVacancyComponent }
     ]
   }
 ];
