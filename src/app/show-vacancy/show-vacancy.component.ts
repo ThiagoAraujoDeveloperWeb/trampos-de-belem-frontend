@@ -47,4 +47,8 @@ export class ShowVacancyComponent implements OnInit {
     });
   }
 
+  voltar(){
+    this.router.navigate(['/home/']);
+  }
+
 }

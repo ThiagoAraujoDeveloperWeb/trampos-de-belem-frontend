@@ -4,7 +4,18 @@
 
 <br><br>
 
+<p-button
+    label="Voltar"
+    class="p-button"
+    (click)="voltar()"
+    *ngIf="liberaCard"
+    icon="pi pi-angle-double-left">
+</p-button>
+
+<br><br>
+
 <div class="p-d-flex p-flex-column card-show" *ngIf="liberaCard">
+
   <br>
   <h2 style="font-size: 30px; margin-left: 1%">
     <strong>{{ vacancy.title }} - {{vacancy.type_vacancy }}</strong>
