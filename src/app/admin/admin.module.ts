@@ -19,6 +19,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {EditorModule} from 'primeng/editor';
 import {ButtonModule} from 'primeng/button';
+import {CardModule} from 'primeng/card';
 import {TableModule} from 'primeng/table';
 import {ToastModule} from 'primeng/toast';
 import {MenuModule} from 'primeng/menu';
@@ -50,6 +51,7 @@ import {NgModule} from '@angular/core';
     ToastModule,
     FormsModule,
     TableModule,
+    CardModule,
     MenuModule,
   ],
   exports: [AdminComponent]
