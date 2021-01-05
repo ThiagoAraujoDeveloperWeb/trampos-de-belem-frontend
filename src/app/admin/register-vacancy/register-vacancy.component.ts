@@ -41,9 +41,11 @@ export class RegisterVacancyComponent implements OnInit {
   };
 
   msg: '';
+  idVacancy = null;
   publishDisabled = true;
   leberarForm = false;
   loading = false;
+  editar = false;
 
   constructor(
     public router: Router,
@@ -59,8 +61,10 @@ export class RegisterVacancyComponent implements OnInit {
     setTimeout(() => {
       this.activatedRoute.params.subscribe(params => {
         if (params) {
+          this.idVacancy = params.id
           this.leberarForm = true;
           this.loading = false;
+          this.editar = true
 
           this.getVacancy(params);
         } else {
@@ -102,6 +106,31 @@ export class RegisterVacancyComponent implements OnInit {
     if (this.validarVaga()){
       this.loading = true;
       this.candidateSrv.cadastrarVaga(this.vacancy).then((response: any) => {
+        this.loading = false;
+
+        if (response.status === 'error') {
+          this.messageService.add(
+            { severity: 'error', summary: 'Erro', detail: response.message }
+          );
+        }
+
+        this.messageService.add(
+          { severity: 'success', summary: 'Sucesso', detail: response.message }
+        );
+
+        this.router.navigate(['admin/listar-vagas']);
+      }).catch(error => {
+        this.loading = false;
+        console.log(error);
+      });
+    }
+  }
+
+  atualizar() {
+    if (this.validarVaga()){
+      console.log('id', this.idVacancy)
+      this.loading = true;
+      this.candidateSrv.atualizarVaga(this.idVacancy, this.vacancy).then((response: any) => {
         this.loading = false;
 
         if (response.status === 'error') {
