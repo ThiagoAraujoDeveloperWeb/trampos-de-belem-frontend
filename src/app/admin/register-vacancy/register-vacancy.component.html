@@ -57,10 +57,13 @@
     <div class="p-field p-col-12 p-md-6">
       <div class="p-field p-fluid">
         <label for="location">Localização*</label>
-        <select class="browser-default custom-select" name="location" [(ngModel)]="vacancy.location" required>
-          <option selected>Selecione</option>
-          <option value="Belém/PA">Belém/PA</option>
-        </select>
+        <p-dropdown [options]="distritos"
+                    name="location"
+                    optionLabel="nome"
+                    [filter]="true"
+                    placeholder="Selecione a localização da vaga"
+                    [showClear]="true"
+                    [(ngModel)]="distrito"></p-dropdown>
           <small id="username2-help"
                   class="p-invalid"
                   *ngIf="vacancy.location == ''">Localização é obrigatório.</small>

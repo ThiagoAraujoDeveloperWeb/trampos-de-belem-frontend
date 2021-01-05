@@ -28,6 +28,7 @@ export class ListVacanciesComponent implements OnInit {
 
   listVacancies() {
     this.loading = true;
+    this.vacancies = [];
     this.candidateSrv.listaDeVagas().then((response: any) => {
       this.loading = false;
       for (const vacancy of response.vacancies) {
@@ -76,8 +77,8 @@ export class ListVacanciesComponent implements OnInit {
           this.messageService.add(
             { severity: 'success', summary: 'Sucesso', detail: response.message }
           );
-          console.log(response);
 
+          this.listVacancies();
         }).catch(error => {
           this.loading = false;
           console.log(error);

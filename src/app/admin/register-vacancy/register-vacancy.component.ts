@@ -4,6 +4,7 @@ import {CandidateService} from '../../_services/candidate.service';
 import {UtilsService} from '../../_services/utils.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {MessageService} from 'primeng/api';
+import {DistritoService} from '../../_services/distrito.service'
 
 @Component({
   selector: 'app-register-vacancy',
@@ -13,6 +14,11 @@ import {MessageService} from 'primeng/api';
 })
 
 export class RegisterVacancyComponent implements OnInit {
+  distrito: {
+    municipio: {
+      nome: ''
+    }
+  };
   vacancy = {
     user_id: JSON.parse(localStorage.getItem('tramposdebelem')).user.id,
     name_user_publish: JSON.parse(localStorage.getItem('tramposdebelem')).user.fullName,
@@ -41,6 +47,7 @@ export class RegisterVacancyComponent implements OnInit {
   };
 
   msg: '';
+  distritos: any;
   idVacancy = null;
   publishDisabled = true;
   leberarForm = false;
@@ -52,11 +59,13 @@ export class RegisterVacancyComponent implements OnInit {
     public candidateSrv: CandidateService,
     private messageService: MessageService,
     public activatedRoute: ActivatedRoute,
-    public utilsSrv: UtilsService
+    public utilsSrv: UtilsService,
+    private distritoSrv: DistritoService
   ) { }
 
   ngOnInit(): void {
     this.loading = true;
+    this.getDistritos();
 
     setTimeout(() => {
       this.activatedRoute.params.subscribe(params => {
@@ -75,6 +84,15 @@ export class RegisterVacancyComponent implements OnInit {
     }, 2000);
   }
 
+  getDistritos(){
+    this.distritos = [];
+    this.distritoSrv.distrito().subscribe(
+      data => {
+        this.distritos = data;
+      }
+    );
+  }
+
   getVacancy(params: any) {
     this.loading = true;
     this.candidateSrv.buscaVaga(params.id).then((response: any) => {
@@ -88,10 +106,6 @@ export class RegisterVacancyComponent implements OnInit {
       this.vacancy.description_vacancy = response.vacancy.description_vacancy;
       this.vacancy.vacancy_expired = '';
       this.vacancy.contact_information = response.vacancy.contact_information;
-
-
-
-
     }).catch(error => {
       this.loading = false;
       console.log(error);
@@ -128,7 +142,7 @@ export class RegisterVacancyComponent implements OnInit {
 
   atualizar() {
     if (this.validarVaga()){
-      console.log('id', this.idVacancy)
+      this.vacancy.location = this.distrito.municipio.nome
       this.loading = true;
       this.candidateSrv.atualizarVaga(this.idVacancy, this.vacancy).then((response: any) => {
         this.loading = false;

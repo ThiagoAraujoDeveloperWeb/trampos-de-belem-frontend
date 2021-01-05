@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
+import {DropdownModule} from 'primeng/dropdown';
 import {SidebarModule} from 'primeng/sidebar';
 import {TooltipModule} from 'primeng/tooltip';
 import {CommonModule} from '@angular/common';
@@ -42,6 +43,7 @@ import {NgModule} from '@angular/core';
     InputTextModule,
     PanelMenuModule,
     CalendarModule,
+    DropdownModule,
     BrowserModule,
     SidebarModule,
     TooltipModule,
