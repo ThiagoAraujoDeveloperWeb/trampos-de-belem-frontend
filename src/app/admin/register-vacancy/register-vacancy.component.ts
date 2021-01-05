@@ -14,11 +14,6 @@ import {DistritoService} from '../../_services/distrito.service'
 })
 
 export class RegisterVacancyComponent implements OnInit {
-  distrito: {
-    municipio: {
-      nome: ''
-    }
-  };
   vacancy = {
     user_id: JSON.parse(localStorage.getItem('tramposdebelem')).user.id,
     name_user_publish: JSON.parse(localStorage.getItem('tramposdebelem')).user.fullName,
@@ -46,6 +41,8 @@ export class RegisterVacancyComponent implements OnInit {
     weekHeader: 'Sem'
   };
 
+  distrito = ''
+
   msg: '';
   distritos: any;
   idVacancy = null;
@@ -69,7 +66,7 @@ export class RegisterVacancyComponent implements OnInit {
 
     setTimeout(() => {
       this.activatedRoute.params.subscribe(params => {
-        if (params) {
+        if (params.id != null) {
           this.idVacancy = params.id
           this.leberarForm = true;
           this.loading = false;
@@ -96,16 +93,17 @@ export class RegisterVacancyComponent implements OnInit {
   getVacancy(params: any) {
     this.loading = true;
     this.candidateSrv.buscaVaga(params.id).then((response: any) => {
-      this.loading = false;
+      console.log(response)
       this.vacancy.title = response.vacancy.title;
       this.vacancy.name_company = response.vacancy.name_company;
       this.vacancy.company_website = response.vacancy.company_website;
-      this.vacancy.location = response.vacancy.location;
+      this.distrito = response.vacancy.location;
       this.vacancy.type_vacancy = response.vacancy.type_vacancy;
       this.vacancy.about_company = response.vacancy.about_company;
       this.vacancy.description_vacancy = response.vacancy.description_vacancy;
       this.vacancy.vacancy_expired = '';
       this.vacancy.contact_information = response.vacancy.contact_information;
+      this.loading = false;
     }).catch(error => {
       this.loading = false;
       console.log(error);
@@ -118,6 +116,7 @@ export class RegisterVacancyComponent implements OnInit {
 
   salvar() {
     if (this.validarVaga()){
+      this.vacancy.location = this.distrito
       this.loading = true;
       this.candidateSrv.cadastrarVaga(this.vacancy).then((response: any) => {
         this.loading = false;
@@ -142,7 +141,7 @@ export class RegisterVacancyComponent implements OnInit {
 
   atualizar() {
     if (this.validarVaga()){
-      this.vacancy.location = this.distrito.municipio.nome
+      this.vacancy.location = this.distrito
       this.loading = true;
       this.candidateSrv.atualizarVaga(this.idVacancy, this.vacancy).then((response: any) => {
         this.loading = false;
@@ -166,6 +165,7 @@ export class RegisterVacancyComponent implements OnInit {
   }
 
   validarVaga() {
+    console.log(this.distrito)
     if (this.vacancy.title === '') {
       this.messageService.add(
         { severity: 'error', summary: 'Erro', detail: 'Preencha o campo TITULO' }
@@ -186,7 +186,7 @@ export class RegisterVacancyComponent implements OnInit {
       this.messageService.add(
         { severity: 'error', summary: 'Erro', detail: 'Preencha o campo NOME DA EMPRESA' }
       );
-    } else if (this.vacancy.location === '') {
+    } else if (this.distrito === '') {
       this.messageService.add(
         { severity: 'error', summary: 'Erro', detail: 'Preencha o campo LOCALIZAÇÃO' }
       );
