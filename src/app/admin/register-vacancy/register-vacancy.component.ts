@@ -41,8 +41,6 @@ export class RegisterVacancyComponent implements OnInit {
     weekHeader: 'Sem'
   };
 
-  distrito = ''
-
   msg: '';
   distritos: any;
   idVacancy = null;
@@ -97,7 +95,7 @@ export class RegisterVacancyComponent implements OnInit {
       this.vacancy.title = response.vacancy.title;
       this.vacancy.name_company = response.vacancy.name_company;
       this.vacancy.company_website = response.vacancy.company_website;
-      this.distrito = response.vacancy.location;
+      this.vacancy.location = response.vacancy.location;
       this.vacancy.type_vacancy = response.vacancy.type_vacancy;
       this.vacancy.about_company = response.vacancy.about_company;
       this.vacancy.description_vacancy = response.vacancy.description_vacancy;
@@ -114,9 +112,14 @@ export class RegisterVacancyComponent implements OnInit {
     this.router.navigate(['admin/dashboard']);
   }
 
+  getDistrito(event){
+    console.log('event:', event)
+    this.vacancy.location = ''
+    this.vacancy.location = event.value.municipio.nome
+  }
+
   salvar() {
     if (this.validarVaga()){
-      this.vacancy.location = this.distrito
       this.loading = true;
       this.candidateSrv.cadastrarVaga(this.vacancy).then((response: any) => {
         this.loading = false;
@@ -141,7 +144,6 @@ export class RegisterVacancyComponent implements OnInit {
 
   atualizar() {
     if (this.validarVaga()){
-      this.vacancy.location = this.distrito
       this.loading = true;
       this.candidateSrv.atualizarVaga(this.idVacancy, this.vacancy).then((response: any) => {
         this.loading = false;
@@ -165,7 +167,6 @@ export class RegisterVacancyComponent implements OnInit {
   }
 
   validarVaga() {
-    console.log(this.distrito)
     if (this.vacancy.title === '') {
       this.messageService.add(
         { severity: 'error', summary: 'Erro', detail: 'Preencha o campo TITULO' }
@@ -186,7 +187,7 @@ export class RegisterVacancyComponent implements OnInit {
       this.messageService.add(
         { severity: 'error', summary: 'Erro', detail: 'Preencha o campo NOME DA EMPRESA' }
       );
-    } else if (this.distrito === '') {
+    } else if (this.vacancy.location === '') {
       this.messageService.add(
         { severity: 'error', summary: 'Erro', detail: 'Preencha o campo LOCALIZAÇÃO' }
       );

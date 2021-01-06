@@ -61,9 +61,10 @@
                     name="location"
                     optionLabel="nome"
                     [filter]="true"
+                    (onChange)="getDistrito($event)"
                     placeholder="Selecione a localização da vaga"
                     [showClear]="true"
-                    [(ngModel)]="distrito"></p-dropdown>
+                    [(ngModel)]="vacancy.location"></p-dropdown>
       </div>
     </div>
 

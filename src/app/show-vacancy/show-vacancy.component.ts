@@ -35,6 +35,7 @@ export class ShowVacancyComponent implements OnInit {
         setTimeout(() => {
           this.candidateSrv.getVaga(params.id).then((response: any) => {
             this.vacancy = response.vacancy;
+            console.log(response.vacancy)
             this.loading = false;
             this.liberaCard = true;
           }).catch(error => {
